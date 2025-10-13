@@ -40,5 +40,5 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('', TemplateView.as_view(template_name="index.html"), name="home"),
     path('todolistapp/', TemplateView.as_view(template_name="todolistapp.html"), name="todolistapp"),
-    path('api-v1/', include('playground.api_urls')), #all API endpoints here 
+    path('api-v1/', include('playground.urls')), 
 ]

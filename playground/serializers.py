@@ -5,7 +5,17 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+        read_only_fields = ['id', 'created_at']
 
+    def validate_email(self,value):
+        if User.objects.filter(email_iexact=value).exists():
+            raise serializers.validationError("This email address is already in use.")
+        return value 
+    
+    def validate_password(self, value):
+        if len(value) < 8:
+            raise serializers.ValidationError("Password must be at least 8 characters long")
+    
 class ListSerializer(serializers.ModelSerializer):
     class Meta:
         model = List
