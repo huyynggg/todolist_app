@@ -27,9 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'todolist.huyynggg.com']
 
+AUTH_USER_MODEL = 'playground.User'
+
 
 # Application definition
-INSTALLED_APPS = [
+INSTALLED_APPS = [ 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,7 +67,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+    }, 
 ]
 
 WSGI_APPLICATION = 'todolistapp.wsgi.application'
@@ -115,6 +117,7 @@ REST_FRAMEWORK = {
     ],
 }
 
+AUTH_USER_MODEL = 'playground.user'
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
@@ -136,3 +139,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'huyn301003@gmail.com' 

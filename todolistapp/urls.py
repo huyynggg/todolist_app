@@ -30,15 +30,15 @@ schema_view = get_schema_view(
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
-)
+) 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/', include('playground.urls')),
     path('', include('playground.urls')),
-    path('swagger.json', schema_view.without_ui(cache_timeout=0), name='schema.json'),
+    path('swagger/v1.json', schema_view.without_ui(cache_timeout=0), name='schema.json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('', TemplateView.as_view(template_name="index.html"), name="home"),
     path('todolistapp/', TemplateView.as_view(template_name="todolistapp.html"), name="todolistapp"),
-    path('api-v1/', include('playground.urls')), 
+    path('api/v1/', include('playground.urls')), 
 ]
